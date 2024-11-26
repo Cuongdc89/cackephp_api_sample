@@ -6,6 +6,8 @@
   - ```docker-compose up -d```
 - Access to **myapp-php-fpm** container 
   - ```docker-compose exec myapp-php-fpm bash```
+- Set permission for user www-data
+  - ``` chown -R www-data:www-data ```
 - Run migration 
   - ```bin/cake migrations migrate```
 - Run seeder 
@@ -70,6 +72,13 @@ email (string, required, unique): The user's email address.
 ### Response
 #### Success (HTTP Status 200)
 If the user is created successfully, the API will return a 201 Created status with the newly created user data.
+```angular2html
+{
+    "status": "success",
+    "message": "User created successfully"
+}
+
+```
 
 #### Error
 If there is an error with the submitted data (e.g., email already exists, invalid email), the API will return an error status with a description of the issue.
@@ -86,7 +95,7 @@ If there is an error with the submitted data (e.g., email already exists, invali
 
 ```
 
-## GET /api/user.json - Retrieve user information
+## GET /api/user.json - Retrieve list user information
 ### Description
 This API allows you to retrieve detailed information about a user from the system.
 
@@ -102,6 +111,8 @@ _/api/user.json_
 
 #### Example URL
 _GET /api/user.json?page=2&limit=10_
+
+http://localhost:8180/api/users.json?page=1&limit=2
 
 ### Response
 #### Success (HTTP Status 200)
