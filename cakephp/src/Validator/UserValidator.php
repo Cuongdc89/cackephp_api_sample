@@ -37,7 +37,7 @@ class UserValidator
             ->add('email', 'unique', [
                 'rule' => function ($value, $context) {
                     $user = $this->usersTable->find()->where(['email' => $value])->first();
-                    return !$user; // Trả về true nếu email chưa tồn tại
+                    return !$user;
                 },
                 'message' => 'Email is already taken',
             ]);

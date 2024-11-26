@@ -21,6 +21,7 @@
             |-- 20241126023321_CreateUsers: migrate file for users table
         |-- Seeds: Folder containing seed data files
             |-- UsersSeed: Seeder data file for users table
+        |-- router: Contains router to APIs endpoint
     |-- src: Folder containing logic code
         |-- Controller
             |-- Api
