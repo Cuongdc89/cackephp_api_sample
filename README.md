@@ -6,8 +6,22 @@
   - ```docker-compose up -d```
 - Access to **myapp-php-fpm** container 
   - ```docker-compose exec myapp-php-fpm bash```
+- install composer
+  - ``` composer install```
 - Set permission for user www-data
-  - ``` chown -R www-data:www-data ```
+  - ``` chown -R www-data:www-data /var/www/myapp```
+- Update database connection information in cakephp/config/app_local.php file as below
+```angular2html
+ 'Datasources' => [
+        'default' => [
+            'host' => 'myapp-mysql',
+            'username' => 'root',
+            'password' => 'root',
+            'database' => 'myapp',
+            'url' => env('DATABASE_URL', null),
+        ],
+    ],
+```
 - Run migration 
   - ```bin/cake migrations migrate```
 - Run seeder 
@@ -152,9 +166,5 @@ If the user exists, the API will return the user's detailed information.
   "message": "Failed to get user list data"
 }
 ```
-
-
-
-
-
-
+## Note:
+- If you get permission related errors, please re-grant permissions to the files or the entire folder
