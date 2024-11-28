@@ -9,3 +9,5 @@ RUN apt-get update \
         php8.1-sqlite3 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+RUN echo "umask 002" >> /etc/profile
